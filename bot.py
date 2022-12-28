@@ -55,27 +55,27 @@ class Chat:
     def __init__(self, msg):
         self.chat_id = msg['chat']['id']
         self.user_input = msg['text']
-        self.user_input = self.user_input.replace('@TLMusicDownloader_bot', '')
+        self.user_input = self.user_input.replace('@Saturno_xyz_bot', '')
         self.user_name = msg['from']['first_name']
         self.message_id = msg['message_id']
 
         self.messages = {
-            'start':'🤖 Hello, '+ self.user_name +'!\n\n'
-                    '📩 Send me:\n\n'
-                    '"*/music* _song name_"  or\n'
-                    '"*/music* _musician name - song name_"\n\n'
-                    'to order some music. 🎶',
+            'start':'🧛‍♂️ Olá, '+ self.user_name +'!\n\n'
+                    '📩 Envie:\n\n'
+                    '"*/som* _Nome da Música_"  or\n'
+                    '"*/som* _Nome da Música - Nome do Artista_"\n\n'
+                    'para baixar alguma música. 🎶',
             
-            'spotify_input_error':"‼️ *Oops! The bot doesn't support Spotify links!*\n"
-                    'Try: "*/music* _song name_"\n'
-                    'or: "*/music* _musician name - song name_"',
+            'spotify_input_error':"‼️ *Oops! O bot não suporta links do Spotify!*\n"
+                    'Try: "*/som* _Nome da música"\n'
+                    'or: "*/som* _Nome da música - Nome do Artista_"',
 
-            'invalid_command':'‼️ *Oops! Invalid command!*\n'
-                    'Try: "*/music* _song name_"\n'
-                    'or: "*/music* _musician name - song name_"',
+            'invalid_command':'‼️ *Oops! Comando inválido!*\n'
+                    'Try: "*/som* _Nome da música"\n'
+                    'or: "*/som* _Nome - e Artista_"',
 
-            'too_long':'‼️ *Oops! Video too long to convert!*\n'
-                    'Order something 30 minutes or less.'
+            'too_long':'‼️ *Oops! Vídeo muito longo para converter!*\n'
+                    'Encomende algo de 30 minutos ou menos.'
 
 
         }
@@ -105,18 +105,18 @@ class Chat:
         min_duration, split_count = Music.get_duration(self, result)
 
         if int(min_duration) < 30 and split_count < 3:
-            file_name = Music.get_title(self, result) +' - @TLMusicDownloader_bot '+str(randint(0,999999))+'.mp3'
+            file_name = Music.get_title(self, result) +' - @Saturno_xyz_bot '+str(randint(0,999999))+'.mp3'
             file_name = file_name.replace('"', '')
 
             self.send_message(f"🎵 {Music.get_title(self, result)}\n🔗 {Music.get_link(self, result)}")
-            downloading_message = self.send_message('⬇️ Downloading... \n_(this may take a while.)_')
+            downloading_message = self.send_message('⬇️ Baixando... \n_(isso pode demorar um pouco.)_')
 
             Music.download_music(self, file_name, Music.get_link(self, result))
 
             try:
                 self.send_audio(file_name)
                 self.delete_message(downloading_message)
-                self.send_message('✅ Sucess!')
+                self.send_message('✅ Baixado com Sucesso!')
                 print ("\nSucess!\n")
             except:
                 print("\nError")
@@ -128,7 +128,7 @@ class Chat:
         if user_input.startswith('/start'):
             self.send_message(self.messages['start'])
 
-        elif user_input.startswith('/music') and user_input[6:]!='':
+        elif user_input.startswith('/som') and user_input[6:]!='':
             if 'open.spotify.com' in user_input[6:]:
                 self.send_message(self.messages['spotify_input_error'])
 
