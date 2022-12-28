@@ -1,5 +1,5 @@
 import os
-import youtube_dl
+import yt_dlp
 import telepotpro
 from random import randint
 from multiprocessing import Process
