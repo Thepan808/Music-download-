@@ -62,17 +62,17 @@ class Chat:
         self.messages = {
             'start':'🧛‍♂️ Olá, '+ self.user_name +'!\n\n'
                     '📩 Envie:\n\n'
-                    '"*/som* _Nome da Música_"  or\n'
+                    '"*/som* _Nome da Música_"  ou\n'
                     '"*/som* _Nome da Música - Nome do Artista_"\n\n'
                     'para baixar alguma música. 🎶',
             
             'spotify_input_error':"‼️ *Oops! O bot não suporta links do Spotify!*\n"
-                    'Try: "*/som* _Nome da música"\n'
-                    'or: "*/som* _Nome da música - Nome do Artista_"',
+                    'Tente: "*/som* _Nome da música"\n'
+                    'ou: "*/som* _Nome da música - Nome do Artista_"',
 
             'invalid_command':'‼️ *Oops! Comando inválido!*\n'
-                    'Try: "*/som* _Nome da música"\n'
-                    'or: "*/som* _Nome - e Artista_"',
+                    'Tente: "*/som* _Nome da música"\n'
+                    'ou: "*/som* _Nome - e Artista_"',
 
             'too_long':'‼️ *Oops! Vídeo muito longo para converter!*\n'
                     'Encomende algo de 30 minutos ou menos.'
