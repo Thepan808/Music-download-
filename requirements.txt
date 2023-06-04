@@ -1,4 +1,4 @@
-yt-dlp
+git+https://github.com/yt-dlp/yt-dlp
 telepotpro
 youtube-search-python
 python-dotenv
